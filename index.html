@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,14 @@
     <title>Iphome-Refeições</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <h1>Iphome</h1>
     <div class="container">
         <div class="flex">
             <h2><mark>PEDIDO</mark></h2>
             <select name="pedido" id="pedido" class="select">
+                <option value="0" selected>SELECIONE O PEDIDO</option>
                 <option value="1">PEDIDO 1</option>
                 <option value="2">PEDIDO 2</option>
                 <option value="3">PEDIDO 3</option>
@@ -28,56 +31,99 @@
                 <option value="13">PEDIDO 13</option>
                 <option value="14">PEDIDO 14</option>
                 <option value="15">PEDIDO 15</option>
-                <option value="16">PEDIDO 16</option>
+
             </select>
             <br>
-            <select name="mesa" id="mesa" class="select">
-                <option value="1">MESA 1</option>
-                <option value="1">MESA 2</option>
-                <option value="1">MESA 3</option>
-                <option value="1">MESA 4</option>
-                <option value="1">MESA 5</option>
-                <option value="1">MESA 6</option>
-                <option value="1">MESA 7</option>
-                <option value="1">MESA 8</option>
-                <option value="1">MESA 9</option>
-                <option value="1">MESA 10</option>
-            </select>
-            <br>
+            
             <input type="button" value="ADICIONAR" class="add" onclick="adicionar()">
-               
-               
+
+
         </div>
         <div class="flex" id="resumo">
             <h2><mark>RESUMO DO PEDIDO</mark> </h2>
+            <div class="fundo-amarelo" id="fundo-amarelo">
+
+            </div>
+            <select name="mesa" id="mesa" class="select">
+                <option value="0">SELECIONE UM MESA</option>
+                <option value="1">MESA 1</option>
+                <option value="2">MESA 2</option>
+                <option value="3">MESA 3</option>
+                <option value="4">MESA 4</option>
+                <option value="5">MESA 5</option>
+                <option value="6">MESA 6</option>
+                <option value="7">MESA 7</option>
+                <option value="8">MESA 8</option>
+                <option value="9">MESA 9</option>
+                <option value="10">MESA 10</option>
+            </select>
+            <br>
+            <input type="button" class="finalizarPedido" value="FINALIZAR PEDIDO" onclick="finalizarPedido()"><br>
+            <input type="button" value="LIMPAR PEDIDO" class="finalizarPedido" onclick="limparPedido()">
         </div>
         <div class="flex2">
             <h2>CARDÁPIO</h2>
             <h3>PRATO FEITO</h3>
-            <P>TODOS OS PRATOS ACOMPANHAM: ARROZ, FEIJÃO, FAROFA E SALADA</P>
-            <P>PEDIDO 1 <span class="right">BIFE A MILANESA.............................R$22,00</span></P>
-            <P>PEDIDO 2 <span class="right">BIFE DE ALCATRA A PARMEGIANA................R$26,00</span></P>
-            <P>PEDIDO 3 <span class="right">FILÉ DE FRANGO A PARMEGIANA.................R$26,00</span></P>
-            <P>PEDIDO 4 <span class="right">FILÉ DE FRANGO A MILANESA...................R$22,00</span></P>
-            <P>PEDIDO 5 <span class="right">BIFE ACEBOLADO GRELHADO.....................R$20,00</span></P>
-            <P>PEDIDO 6 <span class="right">FILÉ DE PESCADA(PEIXE) A MILANESA...........R$20,00</span></P>
-            <P>PEDIDO 7 <span class="right">BISTECA SUINA GRELHADA......................R$18,00</span></P>
-            <P>PEDIDO 8 <span class="right">FILÉ DE FRANGO GRELHADO.....................R$18,00</span></P>
+            <p>TODOS OS PRATOS ACOMPANHAM: ARROZ, FEIJÃO, FAROFA E SALADA</p>
+            <p>PEDIDO 1 </span><span class="direita">BIFE A MILANESA.............................R$21,99</span></p>
+            <p>PEDIDO 2 <span class="direita">BIFE DE ALCATRA A PARMEGIANA................R$25,99</span></p>
+            <p>PEDIDO 3 <span class="direita">FILÉ DE FRANGO A PARMEGIANA.................R$25,99</span></p>
+            <p>PEDIDO 4 <span class="direita">FILÉ DE FRANGO A MILANESA...................R$21,99</span></p>
+            <p>PEDIDO 5 <span class="direita">BIFE ACEBOLADO GRELHADO.....................R$19,99</span></p>
+            <p>PEDIDO 6 <span class="direita">FILÉ DE PEIXE A MILANESA...........R$19,99</span></p>
+            <p>PEDIDO 7 <span class="direita">BISTECA SUINA GRELHADA......................R$17,99</span></p>
+            <p>PEDIDO 8 <span class="direita">FILÉ DE FRANGO GRELHADO.....................R$17,99</span></p>
             <h3>PORÇÕES</h3>
-            <P>PEDIDO 10 <span class="right">BATATA...........R$20,00</span></P>
-            <P>PEDIDO 11 <span class="right">CALABRESA...........R$25,00</span></P>
-            <P>PEDIDO 12 <span class="right">FRANGO A PASSARINHO...........R$25,00</span></P>
-            <P>PEDIDO 13 <span class="right">TORRESMO PURURUCA...........R$25,00</span></P>
-            <H3>BEBIDAS</H3>
-            <P>PEDIDO 14 <span class="right">REFRIGERANTE 600ML...........R$6,00</span></P>
-            <P>PEDIDO 15 <span class="right">SUCO DE LARANJA 1L...........R$8,00</span></P>
-            <P>PEDIDO 16 <span class="right">ÁGUA 500 ML...........R$3,00</span></P>
-            
-          
+            <p>PEDIDO 9 <span class="direita">BATATA...........R$19,99</span></p>
+            <p>PEDIDO 10 <span class="direita">CALABRESA...........R$24,99</span></p>
+            <p>PEDIDO 11 <span class="direita">FRANGO A PASSARINHO...........R$24,99</span></p>
+            <p>PEDIDO 12 <span class="direita">TORRESMO PURURUCA...........R$24,99</span></p>
+            <h3>BEBIDAS</h3>
+            <p>PEDIDO 13 <span class="direita">REFRIGERANTE 600ML...........R$5,99</span></p>
+            <p>PEDIDO 14 <span class="direita">SUCO DE LARANJA 1L...........R$7,99</span></p>
+            <p>PEDIDO 15 <span class="direita">ÁGUA 500 ML...........R$2,99</span></p>
+
+
+
+
         </div>
+
     </div>
-    
-    
+    <div class="div-mesas">
+        <div class="mesa1" id="mesa1">
+            <h2>Mesa 1</h2>
+        </div>
+        <div class="mesa2" id="mesa2">
+            <h2>Mesa 2</h2>
+        </div>
+        <div class="mesa3" id="mesa3">
+            <h2>Mesa 3</h2>
+        </div>
+        <div class="mesa4" id="mesa4">
+            <h2>Mesa 4</h2>
+        </div>
+        <div class="mesa5" id="mesa5">
+            <h2>Mesa 5</h2>
+        </div>
+        <div class="mesa6" id="mesa6">
+            <h2>Mesa 6</h2>
+        </div>
+        <div class="mesa7" id="mesa7">
+            <h2>Mesa 7</h2>
+        </div>
+        <div class="mesa8" id="mesa8">
+            <h2>Mesa 8</h2>
+        </div>
+        <div class="mesa9" id="mesa9">
+            <h2>Mesa 9</h2>
+        </div>
+        <div class="mesa10" id="mesa10">
+            <h2>Mesa 10</h2>
+        </div>
+
+    </div>
+
 </body>
 <script src="main.js"></script>
+
 </html>

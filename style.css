@@ -18,7 +18,8 @@ div{
 }
 
 .flex{
-    color: #fff;
+    color: #000;
+    
     border: solid 1pt #fff;
     width: 25%;
     height: 500px;
@@ -29,6 +30,7 @@ div{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    
 
     
     
@@ -43,29 +45,35 @@ div{
     box-shadow: 2px 2px 10px
     #808080, 5px 5px 20px
     #c0c0c0;
+    font-size: 0.8rem;
     line-height: 0.4;
 }
 
-.right{
-    text-align: end;
+
+
+.direita{
+    text-align: justify;
     color: #fff;
+    
 }
 
 .select{
     background-color: #FAF519;
     color: #000;
     margin-bottom: 70px;
-    width: 30%;
+    width: 75%;
     height: 30px;
     border-radius: 5px;
+    text-align: center;
 }
 
 .add{
     background-color: #FAF519;
     color: #000;
-    width: 30%;
+    width: 75%;
     height: 30px;
     border-radius: 5px;
+    text-align: center;
     
 
     
@@ -76,3 +84,38 @@ h2{
     color: #808080;
 }
 
+.div-mesas{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #000;
+    justify-content: center;
+    
+    
+   
+}
+.mesa1, .mesa2, .mesa3, .mesa4, .mesa5, .mesa6, .mesa7, .mesa8, .mesa9, .mesa10{
+    color: #000;
+    width: 18%;
+    height: 200px;
+    background-color: #fff;
+    border: solid 2px #808080;
+    font-size: 0.6rem;
+    
+
+}
+
+.finalizarPedido{
+    background-color: #FAF519;
+    color: #000;
+    width: 75%;
+    height: 30px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 10px;
+   
+
+}
+.fundo-amarelo{
+    background-color: #FAF519;
+}
