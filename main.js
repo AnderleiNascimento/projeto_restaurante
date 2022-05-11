@@ -1,9 +1,9 @@
 
-const cardapio = [{
+let cardapio = [{
     item: 1,
     produto: 'BIFE A MILANESA',
     valor: parseFloat(21.99),
-    estoque: 3,
+    estoque: 2,
 },
 
 {
@@ -158,18 +158,29 @@ const mesas = [{
 },
 ]
 
-let idMesa1 = '#mesa1'
+
 let resumoPedido = []
 let valorPedido = []
+let estoqueTemporario = JSON.parse(JSON.stringify(cardapio))
 
 function limparPedido() {
     resumoPedido = []
     valorPedido = []
+    estoqueTemporario = JSON.parse(JSON.stringify(cardapio))
+    //estoqueTemporario = [...cardapio]
     let limparResumo = document.querySelector('#fundo-amarelo')
     limparResumo.innerHTML = (resumoPedido)
 }
 
+function controlarEstoqueTemporario(adicionarResumo) {
+    estoqueTemporario.filter(item => {
+        if (item.item == adicionarResumo.item) {
+            return item.estoque--;
+        }
+    })
 
+
+}
 
 function controlarEstoque(resumoPedido) {
     for (let i = 0; i < resumoPedido.length; i++) {
@@ -188,11 +199,18 @@ function adicionarResumo(produto, menu) {
     let resumo = document.querySelector('#fundo-amarelo');
     let adicionarResumo = menu.filter(item => item.item == produto)
     let imprime = cardapio[produto - 1].produto
-    if(cardapio[produto - 1].estoque == 0){
+    let resumoTemporario = cardapio[produto - 1]
+    if (cardapio[produto - 1].estoque  == 0) {
         alert('Produto fora de estoque!')
         return false
-    } 
+    }
+    if (estoqueTemporario[produto - 1].estoque  == 0) {
+        alert('Estoque insuficiente!')
+        return false
+    }
+
     resumoPedido.push(...adicionarResumo)
+    controlarEstoqueTemporario(resumoTemporario)
     resumo.innerHTML += (`${imprime} <br>`)
 
 
@@ -203,7 +221,7 @@ function adicionar() {
     let pedido = document.querySelector('#pedido')
     let valorOpcao = pedido.options[pedido.selectedIndex];
     let valor = valorOpcao.value
-    if(valor == 0){
+    if (valor == 0) {
         alert('Escolha um produto!')
         return false
     }
@@ -215,11 +233,11 @@ function finalizarPedido() {
     let mesa = document.querySelector('#mesa')
     let numeroMesa = mesa.options[mesa.selectedIndex].value;
     let pedidoMesa = document.querySelector(`#mesa${numeroMesa}`)
-    if(numeroMesa == 0){
+    if (numeroMesa == 0) {
         alert('escolha uma mesa')
         return false
     }
-    
+
     controlarEstoque(resumoPedido)
 
     for (let i = 0; i < resumoPedido.length; i++) {
@@ -233,8 +251,7 @@ function finalizarPedido() {
     })
 
     limparPedido()
-
-
+    
 
 
     pedidoMesa.innerHTML = `<h2>Mesa ${numeroMesa} </h2> <br> ${mesas[numeroMesa - 1].pedidos} <br> R$${valorTotal.toFixed(2)}`
